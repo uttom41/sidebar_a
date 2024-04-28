@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
-/*===== VARIABLES CSS Y SASS =====*/
-/*Varibles sass*/
-/*Variables css*/
-/*===== Colores =====*/
+
 :root {
   --first-color: #12192C;
   --second-color: #F5A623;
@@ -106,6 +103,29 @@ a {
       -ms-flex-pack: justify;
           justify-content: space-between;
   overflow: hidden;
+}
+
+ .profile{
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+ .profile img{
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+ .profile h3{
+  color: #ffffff;
+  margin: 10px 0 5px;
+}
+
+ .profile p{
+  color: rgb(206, 240, 253);
+  font-size: 14px;
 }
 
 .nav__logo {

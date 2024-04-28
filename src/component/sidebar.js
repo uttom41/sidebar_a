@@ -1,48 +1,12 @@
 // Filename - components/Sidebar.js
 
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Link,Outlet } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { SidebarData } from "./SidebarData";
-import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import "./sidebar.css";
 
-const Nav = styled.div`
-	background: #15171c;
-	height: 80px;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-`;
-
-const NavIcon = styled(Link)`
-	margin-left: 2rem;
-	font-size: 2rem;
-	height: 80px;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-`;
-
-const SidebarNav = styled.nav`
-	background: #15171c;
-	width: 250px;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	position: fixed;
-	top: 0;
-	left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
-	transition: 350ms;
-	z-index: 10;
-`;
-
-const SidebarWrap = styled.div`
-	width: 100%;
-`;
 
 const Sidebar = () => {
 	const [sidebar, setSidebar] = useState(false);
@@ -54,14 +18,15 @@ const Sidebar = () => {
 
 
 	return (
-		<div className={(sidebar ? 'expander' : 'navBody')} id="navBody">
-			<div className={'l-navbar ' + (sidebar ? 'show' : 'undefined')} id="navbar" >
+		<div className={(sidebar ? 'expander' : 'navBody')}>
+			<div className={'l-navbar ' + (sidebar ? 'show' : 'undefined')} >
 				<nav className="nav">
 					<div>
-						{/* <a href="#" className="nav__logo">
-							<img src="assets/icons/logo.svg" alt="" className="nav__logo-icon" />
-							<span className="nav__logo-text">Admin</span>
-						</a> */}
+					<div class="profile">
+						<img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"/>
+						<h3>Anamika Roy</h3>
+						<p>Designer</p>
+            		</div>
 
 						<button onClick={showSidebar} className="nav__toggle">
        						<i className={sidebar ? 'bx bx-chevron-left' : 'bx bx-chevron-right'}></i>
@@ -80,41 +45,6 @@ const Sidebar = () => {
                     </ul>
 					</div>
 				</nav>
-				 {/* <IconContext.Provider value={{ color: "#fff" }}>
-					<Nav className="nav" >
-						<NavIcon className="link" to="#">
-							<FaIcons.FaBars
-								onClick={showSidebar}
-							/>
-						</NavIcon>
-						<h1
-							style={{
-								textAlign: "center",
-								marginLeft: "200px",
-								color: "green",
-							}}
-						>
-							GeeksforGeeks
-						</h1>
-					</Nav>
-					<SidebarNav sidebar={sidebar}>
-						<SidebarWrap>
-							<NavIcon to="#">
-								<AiIcons.AiOutlineClose
-									onClick={showSidebar}
-								/>
-							</NavIcon>
-							{SidebarData.map((item, index) => {
-								return (
-									<SubMenu
-										item={item}
-										key={index}
-									/>
-								);
-							})}
-						</SidebarWrap>
-					</SidebarNav>
-				</IconContext.Provider>  */}
 			</div>
 			
 			<h2>Unete al canal</h2>
