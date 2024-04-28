@@ -69,11 +69,11 @@ const Sidebar = () => {
 
 						<ul sidebar={sidebar} class="nav__list">
 
-                        <a href="#" className={'nav__link' + ((isActiveNave === "home") ? 'active' : '')} onClick={ () =>setNavName("home")}>
+                        <a href="#" className={((isActiveNave === "home") ? 'active' : 'nav__link')} onClick={ () =>setNavName("home")}>
                             <i class='bx bx-grid-alt nav__icon'></i>
                             <span class="nav__text">Home</span>
                         </a>
-                        <a href="#" className={'nav__link' + (isActiveNave === "user" ? 'active' : '')} onClick={() =>setNavName("user")}>
+                        <a href="#" className={((isActiveNave === "user") ? 'active' : 'nav__link')} onClick={() =>setNavName("user")}>
                             <i class='bx bx-user nav__icon' ></i>
                             <span class="nav__text">User</span>
                         </a>              
