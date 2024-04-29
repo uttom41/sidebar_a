@@ -5,6 +5,11 @@ import { Link,Outlet } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
+import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoHomeOutline } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa";
+
 import "./sidebar.css";
 
 
@@ -16,30 +21,32 @@ const Sidebar = () => {
 
 	const setNavName = (name) => setIsactiveNave(name);
 
+	const ArrowIcon = sidebar?IoIosArrowForward:IoIosArrowBack;
+
 
 	return (
 		<div className={(sidebar ? 'expander' : 'navBody')}>
 			<div className={'l-navbar ' + (sidebar ? 'show' : 'undefined')} >
 				<nav className="nav">
 					<div>
-					<div class="profile">
-						<img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"/>
-						<h3>Anamika Roy</h3>
-						<p>Designer</p>
-            		</div>
+						<div class="profile">
+							<img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"/>
+							<h3>Anamika Roy</h3>
+							<p>Designer</p>
+						</div>
 
 						<button onClick={showSidebar} className="nav__toggle">
-       						<i className={sidebar ? 'bx bx-chevron-left' : 'bx bx-chevron-right'}></i>
+       						<ArrowIcon style={{ color: 'white', fontSize: '24px' }}  />
      					</button>
 
 						<ul sidebar={sidebar} class="nav__list">
 
                         <a href="#" className={((isActiveNave === "home") ? 'active' : 'nav__link')} onClick={ () =>setNavName("home")}>
-                            <i class='bx bx-grid-alt nav__icon'></i>
+                            <IoHomeOutline class='bx bx-grid-alt nav__icon' />
                             <span class="nav__text">Home</span>
                         </a>
                         <a href="#" className={((isActiveNave === "user") ? 'active' : 'nav__link')} onClick={() =>setNavName("user")}>
-                            <i class='bx bx-user nav__icon' ></i>
+                            <FaRegUser class='bx bx-user nav__icon' />
                             <span class="nav__text">User</span>
                         </a>              
                     </ul>
