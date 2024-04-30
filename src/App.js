@@ -24,12 +24,61 @@ import {
 	EventsOne,
 	EventsTwo,
 } from "./pages/Events";
+
 import Contact from "./pages/ContactUs";
 import Support from "./pages/Support";
+
+import { MenuItem } from "./component/menu_items";
+
+
 function App() {
 	return (
 		<Router>
-			<Sidebar>
+			<Sidebar  childrens={
+				[
+					<MenuItem
+                        to="/about-us"
+                        title="About Us"
+						icon= "bx bx-search icon"
+                    />,
+                    <MenuItem
+                        to="/about-us/aim"
+                        title="Our Aim"
+						icon= 'bx bx-search icon'
+                    />,
+                    <MenuItem
+                        to="/about-us/vision"
+                        title="Our Vision"
+						icon= 'bx bx-search icon'
+                    />,
+                    <MenuItem
+                        to="/services"
+                        title="Services"
+						icon= 'bx bx-search icon'
+                    />,
+                    <MenuItem
+                        to="/services/services1"
+                        title="Services1"
+						icon= 'bx bx-search icon'
+                    />,
+                    <MenuItem
+                        to="/services/services2"
+                        title="Services2"
+						icon= 'bx bx-search icon'
+                    />,
+                    <MenuItem
+                        to="/services/services3"
+                        title="Services3"
+						icon= 'bx bx-search icon'
+                    />,
+                    <MenuItem
+                        to="/contact"
+                        title="Contact Us"
+						icon= 'bx bx-search icon'
+                    />
+                   
+				]
+			}/>
 				<Routes>
 					<Route
 						path="/about-us"
@@ -80,7 +129,7 @@ function App() {
 						element={<Support />}
 					/>
 				</Routes>
-			</ Sidebar>
+		
 		</Router>
 	);
 }

@@ -1,92 +1,106 @@
 import React, { useState } from "react";
 import { Link,Outlet } from "react-router-dom";
+import { MenuItem } from "./menu_items";
 
 import "./sidebar.css";
 import logo from './logo.png';
+import SubMenu from "./subnev";
 
 
-const Sidebar = () => {
+
+
+const Sidebar = ({childrens}) => {
+	// console.log(childrens);
+	// if (Array.isArray(childrens)) {
+	// 	const areAllChildrenProps = childrens.every(child => (
+	// 	   child === 'object' && 
+	// 	  child !== null && 
+	// 	   child.title === 'string' && 
+	// 	   child.path === 'string' && 
+	// 	   child.icon === 'object'
+	// 	));
+		
+	// 	if (!areAllChildrenProps) {
+	// 	  throw new Error('All children of Sidebar must be objects with MenuItem properties');
+	// 	}
+	//   }
+
 	const [sidebar, setSidebar] = useState(false);
 	const [mode, setMode] = useState(false);
 	const sidebarClass = `sidebar ${sidebar ? 'close' : ''}`;
 	const modeClass = `navBody ${mode ? 'dark' : ''}`;
 
-
 	return (
 		<div className={modeClass}>
 			<nav className={sidebarClass}>
 				<header>
-					<div class="image-text">
-						<span class="image">
+					<div className="image-text">
+						<span className="image">
 							<img src={logo} alt="logo pic" />
 						</span>
 
-						<div class="text header-text">
-							<span class="name"> SidebarA </span>
-							<span class="profession"> Web developer </span>
+						<div className="text header-text">
+							<span className="name"> SidebarA </span>
+							<span className="profession"> Web developer </span>
 						</div>
 					</div>
 
-					<i class='bx bx-chevron-right toggle' onClick={()=> setSidebar(!sidebar)}> </i>
+					<i className='bx bx-chevron-right toggle' onClick={()=> setSidebar(!sidebar)}> </i>
 				</header>
 
-            <div class="menu-bar">
-                <div class="menu">
-                    <li class="search-box">
+            <div className="menu-bar">
+                <div className="menu">
+                    <li className="search-box">
                         <Link to="#">
-                            <i class='bx bx-search icon'> </i>
+                            <i className='bx bx-search icon'> </i>
                             <input type="search" placeholder="search..."/>
                         </Link>
                     </li>
 
-                    <ul class="menu-links">
-                        <li class="nav-link">
-                            <Link to="#">
-                                <i class='bx bx-home-alt icon'> </i>
-                                <span class='text nav-text'>Dashboard</span>
-                            </Link>
-                        </li>
-                        <li class="nav-link">
-                            <Link to="#">
-                                <i class='bx bx-home-alt icon'> </i>
-                                <span class='text nav-text'>Dashboard</span>
-                            </Link>
-                        </li>
-                        <li class="nav-link">
-                            <Link to="#">
-                                <i class='bx bx-home-alt icon'> </i>
-                                <span class='text nav-text'>Dashboard</span>
-                            </Link>
-                        </li>
-                    </ul>
+					{childrens.map((item, index) => {
+						console.log(item.path);
+						return (
+							<ul className = "menu-links">
+							<li className = "nav-link">
+								<Link to= {item.props.path}>
+								
+									<i className = {item.props.icon} > </i>
+									<span className =' text nav-text'> {item.props.title} </span>
+{/* 
+								     <SubMenu item = {item.props} key={index}/> */}
+								</Link>
+							</li> 
+						</ul>
+						);
+					})}
                 </div>
 
-                <div class="bottom-content">
-                    <li class="">
+                <div className="bottom-content">
+                    <li className="">
                         <Link to="#">
-                            <i class='bx bx-log-out icon'> </i>
-                            <span class="text nav-text">Logout </span>
+                            <i className='bx bx-log-out icon'> </i>
+                            <span className="text nav-text">Logout </span>
                         </Link>
                     </li>
 
-                    <li class="mode">
-                        <div class="moon-sun">
-                            <i class="bx bx-moon icon moon"></i>
-                            <i class="bx bx-sun icon sun"></i>
+                    <li className="mode">
+                        <div className="moon-sun">
+                            <i className="bx bx-moon icon moon"></i>
+                            <i className="bx bx-sun icon sun"></i>
                         </div>
-                        <span class='mode-text text'> {mode ? "Dark Mode" : "Light Mode"}</span>
+                        <span className='mode-text text'> {mode ? "Dark Mode" : "Light Mode"}</span>
 
-                        <div class="toggle-switch" onClick={()=>setMode(!mode)}>
-                            <span class='switch'> </span>
+                        <div className="toggle-switch" onClick={()=>setMode(!mode)}>
+                            <span className='switch'> </span>
                         </div>
                     </li>
                 </div>
             </div>
         </nav>
 
-        <section class="home">
+        {/* <section className="home">
            <Outlet />
-        </section>
+        </section> */}
 			
 		</div>
 	);
