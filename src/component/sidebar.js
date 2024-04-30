@@ -11,10 +11,13 @@ import { IoHomeOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 
 import "./sidebar.css";
+import logo from './logo.png';
 
 
 const Sidebar = () => {
 	const [sidebar, setSidebar] = useState(false);
+	const [mode, setMode] = useState(false);
+
 	const [isActiveNave, setIsactiveNave] = useState("home")
 
 	const showSidebar = () => setSidebar(!sidebar);
@@ -23,57 +26,85 @@ const Sidebar = () => {
 
 	const ArrowIcon = sidebar?IoIosArrowForward:IoIosArrowBack;
 
+	const sidebarClass = `sidebar ${sidebar ? 'close' : ''}`;
+	const modeClass = `navBody ${mode ? 'dark' : ''}`;
+
 
 	return (
-		<div className={(sidebar ? 'expander' : 'navBody')}>
-			<div className={(sidebar ? 'expanderHeader' : 'header')}>
-				<h1>Header showing</h1>
-			</div>
-			<div className={'l-navbar ' + (sidebar ? 'show' : 'undefined')} >
-				<nav className="nav">
-					<div>
-						<div class="profile">
-							<img className= {sidebar? "profilePic": "profilePicExpend"} src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"/>
-							 <h3 style={{
-								visibility: sidebar ? 'visible' : 'hidden',
-								opacity: sidebar ? 1 : 0,
-								transition: 'visibility 0s linear 0.33s, opacity 0.33s linear'
-								}}>Anamika Roy
-							</h3>
-							<p  style={{
-								visibility: sidebar ? 'visible' : 'hidden',
-								opacity: sidebar ? 1 : 0,
-								transition: 'visibility 0s linear 0.33s, opacity 0.33s linear'
-								}}>Designer
-							</p>
-						</div>
+		<div className={modeClass}>
+			 <nav className={sidebarClass}>
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src={logo} alt="logo pic" />
+                    </span>
 
-						<button onClick={showSidebar} className="nav__toggle rotate" >
-       						<ArrowIcon style={{ color: 'white', fontSize: '24px' }}  />
-     					</button>
+                    <div class="text header-text">
+                        <span class="name"> SidebarA </span>
+                        <span class="profession"> Web developer </span>
+                    </div>
+                </div>
 
-						<ul sidebar={sidebar} class="nav__list">
+                <i class='bx bx-chevron-right toggle' onClick={()=> setSidebar(!sidebar)}> </i>
+            </header>
 
-							<Link  className={((isActiveNave === "home") ? 'active' : 'nav__link')} onClick={ () =>setNavName("home")}>
-								<IoHomeOutline className={sidebar ? 'nav__icon':' nav__icon_small'} size={32}/>
-								{sidebar && <span className="nav__text">Home</span>}
-							</Link>
-							<Link className={((isActiveNave === "user") ? 'active' : 'nav__link')} onClick={() =>setNavName("user")}>
-								<FaRegUser className= {sidebar ? 'nav__icon':' nav__icon_small'} size={32}/>
-								{sidebar &&<span className="nav__text">User</span>}
-							</Link>              
-                    	</ul>
-					</div>
-				</nav>
+            <div class="menu-bar">
+                <div class="menu">
+                    <li class="search-box">
+                        <a href="#">
+                            <i class='bx bx-search icon'> </i>
+                            <input type="search" placeholder="search..."/>
+                        </a>
+                    </li>
 
-			</div>
-			<div className="widgetBody">
-				<h2>Unete al canal</h2>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-				Atque optio odio officiis nostrum nesciunt quam libero. 
-				Cumque impedit veritatis, quibusdam nulla accusantium illo. 
-				In velit laboriosam obcaecati quaerat eaque beatae.</p>
-			</div>
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-home-alt icon'> </i>
+                                <span class='text nav-text'>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-home-alt icon'> </i>
+                                <span class='text nav-text'>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-home-alt icon'> </i>
+                                <span class='text nav-text'>Dashboard</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bottom-content">
+                    <li class="">
+                        <a href="#">
+                            <i class='bx bx-log-out icon'> </i>
+                            <span class="text nav-text">Logout </span>
+                        </a>
+                    </li>
+
+                    <li class="mode">
+                        <div class="moon-sun">
+                            <i class="bx bx-moon icon moon"></i>
+                            <i class="bx bx-sun icon sun"></i>
+                        </div>
+                        <span class='mode-text text'> {mode ? "Dark Mode" : "Light Mode"}</span>
+
+                        <div class="toggle-switch" onClick={()=>setMode(!mode)}>
+                            <span class='switch'> </span>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </nav>
+
+        <section class="home">
+            <div class="text"> Dashboard</div>
+        </section>
 			
 		</div>
 	);
