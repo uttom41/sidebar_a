@@ -3,6 +3,7 @@ import { RxDashboard } from "react-icons/rx";
 import { RiContactsLine } from "react-icons/ri";
 import * as RiIcons from "react-icons/ri";
 
+
 export interface MenuItem {
   title: string;
   path: string;
@@ -17,7 +18,7 @@ const routes:MenuItem[] = [
   {
     path: "/",
     title: "AboutUs",
-    icon: <FaInfo />,
+    icon: <RxDashboard />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     subNav: [

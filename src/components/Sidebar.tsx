@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { FaInfo } from "react-icons/fa6";
 import { TbLogout2 } from "react-icons/tb";
-import { IoIosArrowBack } from "react-icons/io";
-import { RxDashboard } from "react-icons/rx";
+import { IoIosArrowBack, IoMdMenu } from "react-icons/io";
+
+
 
 import "./style.css";
 import routes from "../routes";
-
+import profilePic from "../assets/user.png";
+import logoPic from "../assets/logo.png";
 interface SidebarProps {
   children?: React.ReactNode;
 }
@@ -21,8 +22,8 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props) => {
     <>
       <div className={sidebar ? "sidebar" : "sidebar close"}>
         <div className="logo-details">
-          <RxDashboard className="logo-style" />
-          <span className="logo_name">CodingLab</span>
+          <img src={logoPic} className="logo-style" />
+          <span className="logo_name">Admin</span>
         </div>
 
         <ul className="nav-links">
@@ -34,12 +35,12 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props) => {
                     <div className="icon">{item.icon} </div>
                     <span className="link_name">{item.title}</span>
                   </NavLink>
-                  {item.subNav && <IoIosArrowBack
+                  {item.subNav && <div
                     className="arrow"
                     onClick={() =>
                       setSubmenu(subMenu === item.title ? "" : item.title)
                     }
-                  />}
+                  >{item.iconOpened}</div>}
                 </div>
                 <ul className="sub-menu">
                   <NavLink className="link_name" to={item.path} key={index}>
@@ -68,7 +69,7 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props) => {
           <li>
             <div className="profile-details">
               <div className="profile-content">
-                <img src="image/profile.jpg" alt="profileImg" />
+                <img src={profilePic} alt="profileImg" />
               </div>
               <div className="name-job">
                 <div className="profile_name">Prem Shahi</div>
@@ -82,7 +83,7 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props) => {
 
       <section className="home-section">
         <div className="home-content">
-          <FaInfo onClick={() => setSidebar(!sidebar)} />
+          <IoMdMenu onClick={() => setSidebar(!sidebar)} />
           <main className="text">{props.children}</main>
         </div>
       </section>
