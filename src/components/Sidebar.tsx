@@ -38,9 +38,9 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props) => {
                   {item.subNav && <div
                     className="arrow"
                     onClick={() =>
-                      setSubmenu(subMenu === item.title ? "" : item.title)
+                      setSubmenu((subMenu === item.title) ? "" : item.title)
                     }
-                  >{item.iconOpened}</div>}
+                  >{(subMenu === item.title) ? item.iconOpened:item.iconClosed}</div>}
                 </div>
                 <ul className="sub-menu">
                   <NavLink className="link_name" to={item.path} key={index}>
@@ -55,8 +55,8 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props) => {
                             to={subItem.path}
                             key={subIndex}
                           >
-                            <div className="icon">{subItem.icon} </div>
-                            <span className="link_name">{subItem.title}</span>
+                            <div className="sub_icon">{subItem.icon} </div>
+                            <span className="sub_link_name">{subItem.title}</span>
                           </NavLink>
                         </li>
                       );
